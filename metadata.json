@@ -1,0 +1,6 @@
+{
+  "name": "SwapIt",
+  "description": "The Smart Swapping Marketplace for peer-to-peer item exchanges and cash top-ups in Nigeria",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

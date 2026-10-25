@@ -1,0 +1,1270 @@
+# MASTER BUILD PROMPT: SWAPIT — THE SMART SWAPPING MARKETPLACE
+
+## 1. YOUR ROLE
+
+Act as a senior full-stack software engineer, product designer, UX strategist, database architect, and security engineer.
+
+Build a complete, modern, production-oriented web application called **SwapIt**. Do not create just a landing page, visual mockup, or non-functional prototype. Build a working marketplace with authentication, database persistence, item listings, swap offers, messaging, user profiles, and an administrative dashboard.
+
+Make sensible product decisions independently. Do not stop to ask me questions about routine implementation details.
+
+If a feature requires an external service or credentials that are not available, implement the necessary interface and configuration placeholders, clearly identify the missing integration, and continue building the rest of the application.
+
+## 2. PRODUCT VISION
+
+SwapIt is a peer-to-peer marketplace that allows people to exchange items they own for items they want, with or without an additional cash payment.
+
+The core idea is simple:
+
+**"Have something you don't need? Swap it for something you do."**
+
+Examples:
+- Someone swaps an old smartphone for a tablet.
+- Someone exchanges sneakers for a wristwatch.
+- Someone swaps a bicycle for household appliances.
+- Someone exchanges furniture for electronics.
+- Someone swaps a laptop and adds ₦50,000 to receive a more valuable laptop.
+- Someone exchanges a camera for another camera with different features.
+
+SwapIt should make swapping convenient, transparent, social, and safer than arranging exchanges through random social media posts.
+
+### Primary market
+
+Launch in Nigeria, beginning with a mobile-first experience suitable for users in Lagos, Ogun, Oyo, Abuja, and other Nigerian locations.
+
+Use Nigerian naira (₦) for all monetary values. Support Nigerian states, cities, towns, and local government areas.
+
+Design the architecture so the platform can expand to other African countries and international markets later.
+
+### Target users
+
+- Students and young adults.
+- Budget-conscious consumers.
+- Gadget enthusiasts.
+- Fashion and sneaker lovers.
+- Families upgrading household items.
+- Small business owners.
+- People who prefer exchanging goods instead of purchasing new ones.
+
+## 3. BRAND IDENTITY AND DESIGN DIRECTION
+
+Brand name: **SwapIt**
+
+Tagline: **Swap What You Have. Get What You Want.**
+
+Brand personality:
+- Trustworthy.
+- Modern.
+- Simple.
+- Youthful.
+- Practical.
+- Community-driven.
+
+### Visual design
+
+Create a premium, polished interface inspired by the usability of leading e-commerce marketplaces and the simplicity of modern fintech products.
+
+Use:
+- A clean white or warm off-white background.
+- Deep green as the primary brand color.
+- Dark charcoal text.
+- Subtle neutral borders.
+- Rounded cards and buttons.
+- Consistent spacing.
+- High-quality item photography.
+- Clear typography.
+- Minimal shadows.
+- Smooth, restrained animations.
+- Accessible color contrast.
+
+Avoid:
+- Excessive gradients.
+- Cluttered layouts.
+- Too many colors.
+- Oversized decorative elements.
+- Generic AI-generated dashboard designs.
+- Unnecessary animations.
+- Fake testimonials or fabricated trust statistics.
+
+Use a consistent design system for typography, colors, spacing, buttons, inputs, badges, dialogs, cards, and navigation.
+
+Create a recognizable SwapIt logo using a simple exchange-arrow concept. Make it work in a navigation bar, mobile header, favicon, and app icon.
+
+The application must be fully responsive and optimized for mobile phones, tablets, and desktop computers.
+
+## 4. TECHNOLOGY STACK
+
+Use the following stack unless the selected app-building environment requires a compatible alternative.
+
+- Frontend: React and TypeScript.
+- Build tool: Vite, if supported by the platform.
+- Styling: Tailwind CSS.
+- UI components: accessible reusable component library such as shadcn/ui.
+- Backend and database: Supabase.
+- Database: PostgreSQL.
+- Authentication: Supabase Auth.
+- Image storage: Supabase Storage.
+- Real-time messaging: Supabase Realtime.
+- Routing: React Router or an equivalent routing solution.
+- Form validation: Zod and React Hook Form.
+- Icons: Lucide.
+- Deployment: compatible static hosting with Supabase backend integration.
+
+Use a clean, maintainable project structure.
+
+Keep secrets and privileged operations on the server. Never expose service-role keys or other private credentials in frontend code.
+
+If an external service requires API keys, use environment variables and provide an example environment configuration without real secrets.
+
+## 5. MAIN APPLICATION NAVIGATION
+
+Create a clear navigation system.
+
+### Desktop navigation
+
+Include:
+- SwapIt logo.
+- Explore.
+- Categories.
+- How It Works.
+- Search bar.
+- List an Item.
+- Messages.
+- Notifications.
+- User profile menu.
+
+### Mobile navigation
+
+Use a compact bottom navigation bar containing:
+- Home.
+- Explore.
+- List Item.
+- Swaps.
+- Profile.
+
+Display message and notification indicators where appropriate.
+
+Make the main action, **List an Item**, easy to find on every major marketplace screen.
+
+## 6. PUBLIC LANDING PAGE
+
+Create a compelling homepage that immediately explains what SwapIt does.
+
+### Hero section
+
+Headline:
+
+**Your Next Favourite Thing Might Be Someone Else's Old One.**
+
+Supporting text:
+
+"Discover items you love, swap what you no longer need, and make better use of the things you already own."
+
+Primary CTA: **Explore Items**
+
+Secondary CTA: **Start Swapping**
+
+Include an attractive visual showing different items connected by exchange arrows. The hero should feel like a real marketplace rather than a generic SaaS website.
+
+### Search section
+
+Provide a prominent search bar with placeholder text:
+
+"Search phones, laptops, sneakers, furniture..."
+
+Allow users to search by:
+- Item name.
+- Brand.
+- Category.
+- Location.
+- Keywords.
+
+### Featured categories
+
+Display visually appealing category cards for:
+
+1. Phones and Tablets.
+2. Computers and Accessories.
+3. Fashion and Clothing.
+4. Shoes and Sneakers.
+5. Watches and Jewellery.
+6. Home and Furniture.
+7. Electronics.
+8. Gaming.
+9. Sports and Fitness.
+10. Vehicles and Bicycles.
+11. Books and Education.
+12. Baby and Kids.
+13. Appliances.
+14. Cameras and Photography.
+15. Other Items.
+
+Allow administrators to manage categories.
+
+### Recently listed items
+
+Display a responsive grid of item cards.
+
+Each card should show:
+- Item photograph.
+- Item title.
+- Owner's location.
+- Condition.
+- Estimated value, if supplied.
+- Preferred swap category or desired items.
+- Cash difference preference, when relevant.
+- Favourite button.
+
+Clicking an item card opens its detailed listing.
+
+### How it works
+
+Explain the process in three steps:
+
+1. **List:** Upload photos and describe something you own.
+2. **Swap:** Discover items and send an offer for an exchange.
+3. **Exchange:** Agree on the terms, arrange a safe handover, and confirm the exchange.
+
+### Additional homepage sections
+
+Include:
+- Popular items.
+- Recently added items.
+- Items near you.
+- How SwapIt works.
+- Safety tips.
+- Frequently asked questions.
+- Call to action for new users.
+- Footer with About, Contact, Safety, Terms, Privacy, and Help links.
+
+Do not display fabricated user counts, ratings, or transaction statistics.
+
+## 7. USER AUTHENTICATION
+
+Implement real authentication through Supabase.
+
+Users should be able to:
+- Register with their name, email, and password.
+- Sign in.
+- Sign out.
+- Verify their email.
+- Reset forgotten passwords.
+- Update their profile.
+- Upload a profile picture.
+- Change their password securely.
+- Manage their account settings.
+
+Support Google sign-in if configured. Do not make the app dependent on Google authentication.
+
+Require authentication before users can:
+- Create listings.
+- Favourite items.
+- Send swap offers.
+- Start conversations.
+- Accept swap offers.
+- Leave reviews.
+- Report users or listings.
+
+Allow visitors to browse public listings without an account.
+
+Create useful loading, success, empty, and error states for every authentication flow.
+
+Never store passwords directly in the application database.
+
+## 8. USER PROFILES
+
+Every registered user should have a profile page.
+
+Profile information:
+- Profile photo.
+- Display name.
+- Username.
+- General location.
+- Short biography.
+- Member since date.
+- Email verification status.
+- Number of active listings.
+- Completed swap count.
+- Average rating, once reviews exist.
+- Public reviews.
+- Active listings.
+- Previously completed swaps, subject to privacy settings.
+
+Allow users to edit their profiles.
+
+Do not expose private email addresses, authentication identifiers, exact home addresses, or phone numbers publicly by default.
+
+Provide a public profile URL with a unique username.
+
+## 9. CREATE AND MANAGE ITEM LISTINGS
+
+Users must be able to create, edit, pause, mark as unavailable, and delete their own listings.
+
+### Listing creation form
+
+Include:
+
+**Basic information**
+- Item title.
+- Description.
+- Category.
+- Subcategory.
+- Brand.
+- Model.
+- Condition.
+- Estimated current value in naira.
+- Negotiability of estimated value.
+
+**Condition options**
+- Brand new.
+- Like new.
+- Excellent.
+- Good.
+- Fair.
+- For parts or repair.
+
+Clearly explain that estimated values are user-provided and are not guaranteed valuations by SwapIt.
+
+**Photos**
+- Upload multiple images.
+- Show image previews.
+- Allow users to remove and reorder photos.
+- Set a primary image.
+- Validate file type and size.
+- Compress images where practical.
+- Store files securely in Supabase Storage.
+
+Require at least one photograph before publishing a listing.
+
+**Location**
+- State.
+- City or town.
+- Local government area, where relevant.
+
+Never require a precise residential address for public listings.
+
+**What the owner wants**
+- Preferred item categories.
+- Specific items they would accept.
+- Optional preferred brands or models.
+- Minimum or maximum acceptable value, if desired.
+- Whether a cash top-up is acceptable.
+- Whether the owner is willing to add cash.
+- Whether the owner is willing to receive cash.
+- Whether the owner prefers an item-for-item swap.
+
+**Exchange preferences**
+- Preferred handover method.
+- General availability.
+- Any relevant restrictions.
+
+Allow users to preview their listing before publishing.
+
+### Listing management
+
+Create a My Listings page with tabs for:
+- Active.
+- Drafts.
+- Paused.
+- Pending exchange.
+- Swapped.
+- Archived.
+
+A listing that is part of an accepted swap must not remain freely available for unrelated exchanges unless the existing transaction is cancelled or otherwise resolved.
+
+## 10. EXPLORE MARKETPLACE
+
+Create a functional Explore page with a searchable, filterable item grid.
+
+### Search and filtering
+
+Users should be able to filter by:
+- Keyword.
+- Category.
+- Subcategory.
+- Brand.
+- Condition.
+- State.
+- City.
+- Estimated value range.
+- Date listed.
+- Cash top-up accepted.
+- Items near their selected location.
+- Recently added.
+- Most favourited.
+- Relevance.
+
+Allow sorting by:
+- Recommended.
+- Newest.
+- Estimated value: low to high.
+- Estimated value: high to low.
+
+Implement real database-backed search and filters. Do not make the filters decorative.
+
+Use pagination or infinite scrolling with proper loading states.
+
+For nearby items, use the user's selected location or an explicitly granted location permission. Do not silently collect precise GPS coordinates.
+
+If no results are found, display a useful empty state and offer to clear filters.
+
+## 11. ITEM DETAIL PAGE
+
+Each listing should have a dedicated page.
+
+Include:
+- Image gallery.
+- Item title.
+- Description.
+- Category and brand.
+- Condition.
+- Estimated value.
+- Owner profile summary.
+- Owner's general location.
+- Listing date.
+- Swap preferences.
+- Cash top-up preferences.
+- Similar listings.
+- Favourite button.
+- Share button.
+- Report listing button.
+
+Primary CTA: **Make a Swap Offer**
+
+Secondary CTA: **Message Owner**
+
+If the viewer owns the item, replace these actions with Edit Listing and Manage Listing.
+
+Clearly label user-estimated item values.
+
+Include a warning that the displayed value is not a guaranteed market price.
+
+## 12. CORE FEATURE: SWAP OFFER SYSTEM
+
+This is the most important feature in the application.
+
+Build a complete, persistent swap-offer workflow. Users must be able to offer one of their own listed items in exchange for another user's item.
+
+### Step 1: Select the desired item
+
+The user visits another person's listing and clicks Make a Swap Offer.
+
+### Step 2: Select an item to offer
+
+Display the user's eligible active listings.
+
+The user selects the item they want to exchange.
+
+Only eligible listings owned by the authenticated user should appear.
+
+If the user has no eligible listings, prompt them to create one.
+
+### Step 3: Add optional cash difference
+
+Allow the offering user to propose:
+- Item for item.
+- Item plus additional cash.
+- Item in exchange for an item plus cash from the recipient, where the recipient agrees.
+
+Represent cash top-ups explicitly with:
+- Payer.
+- Amount in naira.
+- Currency.
+- Offer notes.
+
+The cash amount must be non-negative.
+
+Do not automatically calculate or assume the difference between two user-estimated values is the correct amount.
+
+### Step 4: Add a message
+
+Allow the sender to explain their offer and optionally suggest exchange arrangements.
+
+### Step 5: Send offer
+
+Show a clear summary before submission.
+
+Once sent:
+- Create a persistent swap-offer record.
+- Notify the recipient.
+- Display the offer in both users' swap dashboards.
+- Make the offer visible only to authorized participants.
+
+### Step 6: Recipient actions
+
+The recipient can:
+- Accept.
+- Decline.
+- Counter-offer.
+- Ask a question through messaging.
+
+### Step 7: Counter-offers
+
+Allow users to propose different items or different cash amounts.
+
+Preserve the original offer and the history of counter-offers.
+
+Do not silently overwrite previous terms.
+
+### Step 8: Acceptance and confirmation
+
+When an offer is accepted:
+- Record the accepted terms.
+- Create a swap transaction.
+- Lock the relevant listings against conflicting accepted exchanges.
+- Notify both parties.
+- Provide a transaction detail page.
+- Allow both parties to discuss and arrange the handover.
+
+Acceptance does not mean the physical exchange has been completed.
+
+### Step 9: Exchange completion
+
+Both parties must independently confirm that the exchange has occurred.
+
+Only mark the exchange as completed when both parties confirm.
+
+If one party disputes completion, provide a dispute-reporting process and notify the administrator.
+
+### Step 10: Cancellation and expiry
+
+Support:
+- Declined offers.
+- Withdrawn offers.
+- Expired offers.
+- Cancelled transactions.
+- Disputed transactions.
+- Completed swaps.
+
+Use server-side validation and database transactions where necessary to prevent race conditions and conflicting accepted swaps.
+
+## 13. SWAP STATUS AND TRANSACTION HISTORY
+
+Create a clear status system.
+
+Suggested offer statuses:
+- Pending.
+- Countered.
+- Accepted.
+- Declined.
+- Withdrawn.
+- Expired.
+
+Suggested transaction statuses:
+- Awaiting arrangement.
+- Exchange arranged.
+- Awaiting handover.
+- Awaiting confirmation.
+- Completed.
+- Cancelled.
+- Disputed.
+
+Use valid state transitions rather than allowing arbitrary status changes.
+
+Create a transaction timeline showing:
+- Offer created.
+- Counter-offers.
+- Acceptance.
+- Agreed arrangements.
+- Completion confirmations.
+- Cancellation or dispute events.
+
+Record timestamps and the user responsible for each significant action.
+
+Keep transaction history accessible to the relevant participants.
+
+## 14. REAL-TIME MESSAGING
+
+Build a functional messaging system.
+
+Users should be able to communicate about listings and swap offers.
+
+Features:
+- One-to-one conversations.
+- Persistent messages.
+- Real-time updates.
+- Message timestamps.
+- Read status where supported.
+- Unread message count.
+- Conversation list.
+- Item context attached to a conversation.
+- Swap offer context attached to a conversation.
+- Basic text messages.
+- Optional image attachments.
+- Block and report controls.
+
+Display the relevant listing thumbnail and title in contextual conversations.
+
+Allow users to open the relevant listing or swap offer from a conversation.
+
+Restrict access so only authorized conversation participants can read or send messages.
+
+Validate message content and attachment types.
+
+Add rate limits or other abuse controls for messaging.
+
+Do not build anonymous public messaging.
+
+## 15. WISHLIST AND FAVOURITES
+
+Allow users to save listings they are interested in.
+
+Features:
+- Add or remove favourites.
+- View saved listings.
+- Receive notifications if a favourited listing becomes unavailable.
+- Receive relevant updates if an item owner changes the listing substantially, where practical.
+
+Prevent duplicate favourites for the same user and listing.
+
+## 16. NOTIFICATIONS
+
+Create an in-app notification system.
+
+Notify users when:
+- Someone sends a swap offer.
+- Someone accepts or declines an offer.
+- A counter-offer is received.
+- A new message arrives.
+- A swap is accepted.
+- A transaction is cancelled.
+- A transaction requires confirmation.
+- A dispute receives an update.
+- A favourite listing becomes unavailable.
+- An account or listing requires attention.
+
+Each notification should:
+- Have a type.
+- Include a relevant reference.
+- Record when it occurred.
+- Track whether it has been read.
+- Link to the relevant screen.
+
+Provide a notification centre with unread indicators and a mark-as-read action.
+
+Prepare an email notification architecture for important events, but do not claim email delivery works until an email provider is configured and tested.
+
+## 17. REVIEWS AND REPUTATION
+
+After a transaction is completed, allow each participant to review the other.
+
+Include:
+- One-to-five-star rating.
+- Optional written feedback.
+- Transaction reference.
+- Review timestamp.
+
+Only users who participated in the completed transaction can review each other for that transaction.
+
+Prevent duplicate reviews for the same reviewer and transaction.
+
+Display average ratings only when ratings exist.
+
+Provide reporting and moderation for abusive or fraudulent reviews.
+
+Do not allow users to review strangers or generate reviews without a completed transaction.
+
+## 18. TRUST, SAFETY AND FRAUD PREVENTION
+
+Safety must be built into the product.
+
+Include:
+- Report listing.
+- Report user.
+- Block user.
+- Safety guidelines.
+- Suspicious activity reporting.
+- Moderation queue.
+- Listing approval or review controls.
+- Account suspension controls.
+- Dispute reporting.
+- Audit logs for sensitive administrative actions.
+
+Display practical safety advice:
+- Meet in a busy public location.
+- Inspect both items before exchanging.
+- Test electronics before accepting them.
+- Do not rely on photographs alone.
+- Do not send money based only on promises.
+- Avoid sharing passwords, bank PINs, or verification codes.
+- Never assume a user is trustworthy solely because of a profile rating.
+
+Allow the parties to agree on a public handover location without exposing their home addresses.
+
+Do not claim that users or items are verified unless a real verification process has been completed.
+
+Implement appropriate image upload validation, authorization checks, rate limits, and protection against unauthorized database access.
+
+## 19. ADMINISTRATIVE DASHBOARD
+
+Create a protected admin dashboard accessible only to authorized administrators.
+
+Dashboard overview:
+- Total registered users.
+- Active listings.
+- Pending swap offers.
+- Accepted swaps.
+- Completed swaps.
+- Open disputes.
+- Reports awaiting review.
+
+Provide management screens for:
+- Users.
+- Listings.
+- Categories.
+- Swap offers.
+- Transactions.
+- Reports.
+- Disputes.
+- Reviews.
+- Platform settings.
+
+Administrator actions should include:
+- Suspend or reactivate accounts.
+- Remove or restore listings.
+- Review user reports.
+- Resolve or update disputes.
+- Manage categories.
+- Review suspicious activity.
+- Inspect relevant transaction records.
+
+Require a reason for sensitive moderation actions and record the action in an audit log.
+
+Do not grant administrator privileges merely because a user edits their profile or sends a request from the browser.
+
+Use secure role-based access control enforced by the backend.
+
+## 20. MONETIZATION ARCHITECTURE
+
+Design SwapIt so it can generate revenue without making the initial user experience unnecessarily complicated.
+
+Prepare the architecture for these revenue streams:
+
+### A. Featured listings
+
+Users pay to promote eligible listings.
+
+A featured listing may appear in a clearly labelled promotional section or at the top of relevant search results.
+
+### B. Premium membership
+
+Potential premium benefits:
+- More active listings.
+- Enhanced listing analytics.
+- Additional promotional credits.
+- Advanced search alerts.
+- Profile customization.
+
+### C. Business accounts
+
+Allow future business users to create storefronts and list multiple items.
+
+### D. Sponsored categories and placements
+
+Allow the administrator to configure sponsored placements.
+
+### E. Optional transaction services
+
+Keep the architecture extensible for future payment processing or protected exchange services, subject to the applicable legal, financial, and operational requirements.
+
+For the first release, prioritize free listings and successful exchanges over complicated monetization.
+
+Do not collect real payments until the relevant payment provider is integrated, credentials are configured, and the payment flow is tested.
+
+Do not describe an offer as an escrow-protected exchange unless a genuine escrow arrangement exists.
+
+## 21. DATABASE DESIGN
+
+Create a properly normalized PostgreSQL database using Supabase migrations.
+
+Implement appropriate foreign keys, indexes, unique constraints, timestamps, and deletion policies.
+
+At minimum, create these tables:
+
+### profiles
+- id: references the authenticated user.
+- username: unique.
+- display_name.
+- avatar_url.
+- bio.
+- state.
+- city.
+- lga.
+- role.
+- account_status.
+- created_at.
+- updated_at.
+
+### categories
+- id.
+- name.
+- slug.
+- parent_id.
+- image_url.
+- is_active.
+- created_at.
+
+### listings
+- id.
+- owner_id.
+- category_id.
+- title.
+- slug or equivalent unique public identifier.
+- description.
+- brand.
+- model.
+- condition.
+- estimated_value.
+- currency.
+- state.
+- city.
+- lga.
+- status.
+- accepts_cash_topup.
+- willing_to_add_cash.
+- preferred_categories.
+- preferred_items.
+- created_at.
+- updated_at.
+
+### listing_images
+- id.
+- listing_id.
+- storage_path.
+- display_order.
+- is_primary.
+- created_at.
+
+### favourites
+- id.
+- user_id.
+- listing_id.
+- created_at.
+
+Add a unique constraint on user_id and listing_id.
+
+### swap_offers
+- id.
+- sender_id.
+- recipient_id.
+- offered_listing_id.
+- requested_listing_id.
+- cash_amount.
+- cash_payer_id.
+- currency.
+- message.
+- status.
+- parent_offer_id.
+- expires_at.
+- created_at.
+- updated_at.
+
+Design counter-offers so the original offer remains available for history and the parties can identify the latest valid terms.
+
+### swap_transactions
+- id.
+- accepted_offer_id.
+- participant_one_id.
+- participant_two_id.
+- listing_one_id.
+- listing_two_id.
+- cash_amount.
+- cash_payer_id.
+- status.
+- handover_notes.
+- completed_at.
+- created_at.
+- updated_at.
+
+### transaction_confirmations
+- id.
+- transaction_id.
+- user_id.
+- confirmed_at.
+
+Ensure that each participant can confirm only once per transaction.
+
+### conversations
+- id.
+- listing_id, nullable where appropriate.
+- swap_offer_id, nullable where appropriate.
+- created_at.
+- updated_at.
+
+### conversation_participants
+- conversation_id.
+- user_id.
+- last_read_at.
+
+### messages
+- id.
+- conversation_id.
+- sender_id.
+- content.
+- attachment_path, nullable.
+- created_at.
+
+### notifications
+- id.
+- user_id.
+- type.
+- title.
+- body.
+- reference_type.
+- reference_id.
+- is_read.
+- created_at.
+
+### reviews
+- id.
+- transaction_id.
+- reviewer_id.
+- reviewee_id.
+- rating.
+- comment.
+- created_at.
+
+### reports
+- id.
+- reporter_id.
+- target_type.
+- target_id.
+- reason.
+- description.
+- status.
+- admin_notes.
+- created_at.
+- updated_at.
+
+### transaction_events
+- id.
+- transaction_id.
+- actor_id.
+- event_type.
+- event_data.
+- created_at.
+
+### admin_audit_logs
+- id.
+- administrator_id.
+- action.
+- target_type.
+- target_id.
+- reason.
+- created_at.
+
+Adjust the schema where necessary to support correct transaction handling, but preserve the underlying business rules.
+
+Add appropriate indexes for listing searches, ownership, offer status, conversation retrieval, notification retrieval, and transaction history.
+
+Use database constraints to prevent invalid relationships wherever practical.
+
+## 22. DATABASE SECURITY AND ROW-LEVEL SECURITY
+
+Enable Supabase Row-Level Security on every table exposed through the application API.
+
+Write and test policies that enforce the following:
+
+- Public visitors can read only publicly available listings and approved public profile fields.
+- Authenticated users can manage their own profiles within permitted fields.
+- Users can modify only their own listings.
+- Private or removed listings are not exposed as public listings.
+- Users can access only their own favourites.
+- Swap participants can access only the offers and transactions in which they are authorized participants.
+- Only authorized conversation participants can read messages.
+- Only authenticated participants can send messages to their conversations.
+- Users cannot mark another participant's messages as their own.
+- Users cannot alter their role to administrator.
+- Users cannot edit their own reviews after submission unless an explicitly designed moderation workflow allows it.
+- Users cannot create false transaction confirmations for other participants.
+- Users cannot modify transaction records in ways that bypass valid state transitions.
+- Only authorized administrators can perform administrative operations.
+
+Use trusted server-side functions or appropriately secured database functions for operations that require atomicity or elevated permissions.
+
+Do not trust user-supplied IDs, prices, roles, ownership claims, or status values without server-side validation.
+
+## 23. STORAGE AND IMAGE HANDLING
+
+Create separate storage policies for:
+- Public listing images.
+- Profile images.
+- Private message attachments, if supported.
+- Other private files.
+
+Validate uploaded content types and file sizes.
+
+Restrict users to uploading files for resources they own or are authorized to modify.
+
+Prevent arbitrary users from replacing or deleting other users' files.
+
+Use optimized image sizes and responsive image loading to reduce data usage.
+
+Avoid exposing private attachment URLs to unauthorized users.
+
+## 24. USER EXPERIENCE REQUIREMENTS
+
+Every major feature must include:
+- Loading state.
+- Empty state.
+- Success feedback.
+- Error feedback.
+- Form validation.
+- Confirmation dialogs for destructive actions.
+- Useful mobile layouts.
+- Keyboard-accessible controls.
+- Appropriate accessibility labels.
+
+Examples:
+
+When a user has no listings:
+
+"You haven't listed anything yet. Add your first item and start swapping."
+
+When no search results exist:
+
+"No items found. Try a different search or adjust your filters."
+
+When an offer is sent:
+
+"Your swap offer has been sent. We'll notify you when the owner responds."
+
+When an exchange is accepted:
+
+"Your swap has been accepted. Contact the other person to agree on the handover."
+
+Do not show success messages before the relevant database operation succeeds.
+
+Use optimistic UI only where rollback and error handling are properly implemented.
+
+## 25. PERFORMANCE AND SEARCH ENGINE OPTIMIZATION
+
+Optimize for Nigerian mobile networks and affordable devices.
+
+Requirements:
+- Fast initial page load.
+- Lazy-load listing images.
+- Use image compression and appropriately sized thumbnails.
+- Avoid unnecessary JavaScript dependencies.
+- Paginate large listing collections.
+- Minimize repeated database queries.
+- Provide responsive layouts.
+- Include sensible caching for public content.
+- Avoid exposing private user data through cached responses.
+
+Implement appropriate page titles, descriptions, canonical URLs, Open Graph metadata, and social-sharing previews for public listings.
+
+Make public listing pages accessible to search engines where supported by the chosen rendering architecture.
+
+Use meaningful URLs, such as:
+
+- /explore
+- /categories/phones-tablets
+- /listing/unique-listing-slug
+- /u/username
+- /dashboard/listings
+- /dashboard/swaps
+- /messages
+- /notifications
+- /settings
+- /admin
+
+## 26. DEMO DATA AND FIRST-TIME EXPERIENCE
+
+Seed the application with realistic sample listings for development and demonstration.
+
+Examples:
+- Samsung Galaxy smartphone.
+- Used laptop.
+- Sneakers.
+- Wristwatch.
+- Study desk.
+- Office chair.
+- Gaming console.
+- Camera.
+- Bicycle.
+- Kitchen appliance.
+
+Use realistic Nigerian locations and illustrative naira values.
+
+Clearly distinguish seeded demonstration data from actual user-generated listings.
+
+Do not invent verified sellers, completed transactions, genuine customer reviews, or actual user statistics.
+
+Create a useful first-time onboarding experience explaining how to list an item, make an offer, and exchange safely.
+
+## 27. IMPORTANT BUSINESS RULES
+
+Implement these rules throughout the application:
+
+1. A user cannot make a swap offer to themselves.
+2. A user cannot offer an item they do not own.
+3. A user cannot make an offer using an inactive or unavailable listing.
+4. A user cannot accept an offer for a listing they do not control.
+5. Only the intended recipient can accept or decline an incoming offer.
+6. Only authorized participants can counter-offer or withdraw their own pending offers.
+7. Cash amounts must be valid non-negative numbers.
+8. Cash top-up direction must be explicit.
+9. Accepted swaps must preserve the accepted terms.
+10. Competing accepted transactions must not reserve the same listing simultaneously.
+11. Both parties must confirm before an exchange is marked completed.
+12. Only completed transactions permit transaction-based reviews.
+13. Blocked users must not be able to initiate new interactions that the blocking rules prohibit.
+14. Suspended users must not be able to create listings or initiate new offers.
+15. Deleted, expired, or unavailable listings must be handled consistently across search, offers, and transactions.
+16. Administrators must not be able to silently alter transaction history without an auditable record.
+
+Use server-side authorization and transactional database operations for sensitive workflows.
+
+## 28. TESTING REQUIREMENTS
+
+Before declaring the application complete, test the main user journeys.
+
+### User journey A: New user
+
+- Register.
+- Verify email where configured.
+- Create a profile.
+- Browse listings.
+- Create a listing.
+- Upload photographs.
+- Edit the listing.
+
+### User journey B: Successful swap
+
+- User A creates a listing.
+- User B creates a separate listing.
+- User B offers their item in exchange for User A's item.
+- User A receives a notification.
+- User A counters or accepts the offer.
+- Both parties view the accepted transaction.
+- Both parties arrange the handover.
+- Both parties confirm completion.
+- Both parties can review each other.
+
+### User journey C: Counter-offer
+
+- Send an offer.
+- Create a counter-offer.
+- Preserve the history.
+- Accept the final valid terms.
+- Ensure earlier terms cannot be mistaken for the accepted terms.
+
+### User journey D: Security
+
+- Attempt to modify another user's listing.
+- Attempt to read an unrelated private conversation.
+- Attempt to accept an offer as an unauthorized user.
+- Attempt to change a normal user's role to administrator.
+- Attempt to complete a transaction without both confirmations.
+- Attempt to reserve an already committed listing.
+
+All unauthorized actions must be rejected.
+
+### User journey E: Mobile experience
+
+Test navigation, search, listing creation, image uploads, offer creation, messaging, and transaction confirmation on a narrow mobile viewport.
+
+Fix critical errors before considering the application complete.
+
+## 29. IMPLEMENTATION PLAN
+
+Build the product in this order.
+
+**Phase 1 — Foundation**
+- Design system.
+- Navigation.
+- Homepage.
+- Database schema.
+- Authentication.
+- User profiles.
+
+**Phase 2 — Marketplace**
+- Listing creation.
+- Image uploads.
+- Explore page.
+- Search and filters.
+- Listing details.
+- Favourites.
+
+**Phase 3 — Swapping**
+- Offer creation.
+- Cash top-ups.
+- Counter-offers.
+- Notifications.
+- Transaction creation.
+- Listing reservation.
+- Exchange confirmation.
+
+**Phase 4 — Communication and trust**
+- Real-time messaging.
+- Reviews.
+- Reporting.
+- Blocking.
+- Disputes.
+- Safety guidance.
+
+**Phase 5 — Administration and launch**
+- Admin dashboard.
+- Moderation.
+- Analytics.
+- SEO.
+- Performance optimization.
+- Security testing.
+- Deployment documentation.
+
+Prioritize completing a coherent, working core experience over creating many incomplete screens.
+
+## 30. FINAL DELIVERABLES
+
+Deliver:
+
+1. A complete, responsive SwapIt application.
+2. A polished visual identity and consistent design system.
+3. Functional authentication.
+4. Persistent marketplace listings and image storage.
+5. Real search and filtering.
+6. A working swap-offer and counter-offer workflow.
+7. Explicit cash top-up handling.
+8. Persistent messaging.
+9. Notifications.
+10. Transaction tracking and dual confirmation.
+11. Reviews and reputation.
+12. Reporting, blocking, and moderation.
+13. A protected administrative dashboard.
+14. Database migrations and Row-Level Security policies.
+15. Realistic development seed data.
+16. A clear environment-variable example.
+17. Setup and deployment instructions.
+18. A list of external services that still require configuration.
+19. A summary of completed features and any remaining limitations.
+
+## 31. FINAL INSTRUCTIONS
+
+Start by establishing the project structure, design system, database architecture, and authentication.
+
+Then implement the application end to end.
+
+Do not stop after generating the homepage.
+
+Do not create buttons that do nothing.
+
+Do not simulate database operations when real persistence is expected.
+
+Do not use browser-only state as the permanent source of truth for offers, listings, transactions, or permissions.
+
+Do not leave security policies as an afterthought.
+
+Do not claim an integration works unless it has actually been implemented and tested.
+
+When you encounter a technical issue, diagnose it, fix it, and continue.
+
+At the end, provide:
+- What has been built.
+- What works.
+- What needs external configuration.
+- How to run the application.
+- How to deploy it.
+- What should be tested before accepting real users.
+
+**The goal is to build a real swapping marketplace that people can use, not merely a design that looks like one.**
